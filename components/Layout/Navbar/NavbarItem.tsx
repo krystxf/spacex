@@ -20,7 +20,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
   return (
     <Link href={link} passHref>
       <a
-        className={`space-y-[0.3rem] text-[0.9rem] py-1.5 border-b border-opacity-0 h-full ${
+        className={`space-y-[0.3rem] text-[0.9rem] py-1.5 border-b border-opacity-0 h-full transition-all duration-500 ease-in-out ${
           hideOnMd ? 'md:hidden' : ''
         }
           ${hideOnSm ? 'hidden md:block' : ''}

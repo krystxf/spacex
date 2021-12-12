@@ -5,20 +5,48 @@ import LaunchTableRow from './Row';
 export type LaunchTableProps = { launch: any };
 
 const LaunchTable: React.FC<LaunchTableProps> = ({ launch }) => {
+  const plannedLaunch = new Date(launch.launch_date_utc).toLocaleDateString(
+    'en-UK',
+    {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+    }
+  );
+
+  const actualLaunch = launch.static_fire_date_utc // if date is null return unknown
+    ? new Date(launch.static_fire_date_utc).toLocaleDateString('en-UK', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+      })
+    : 'unknown';
+
   return (
     <>
       <div className="flex flex-col text-white font-medium divide-y divide-gray-500 max-w-md w-full ">
         <LaunchTableRow title="Rocket" value={launch.rocket.rocket.name} />
+
         <LaunchTableRow title="Mission" value={launch.mission_name} />
+
         <LaunchTableRow
-          title="Launch date"
-          value={
-            // if launch is in past, return unknown date, bcs we don't have launch date yet
+          title={
+            // if launch is in past, return planned, bcs we don't have launch date yet
             new Date(launch.launch_date_utc) < new Date()
-              ? 'unknown'
-              : new Date(launch.launch_date_utc).toString()
+              ? 'planned launch date'
+              : 'launch date'
           }
+          value={plannedLaunch}
         />
+
+        {plannedLaunch !== actualLaunch && ( // show actual launch date only if it differs from planned
+          <LaunchTableRow title="launch date" value={actualLaunch} />
+        )}
+
         <div>
           <div className="py-3 text-xs font-bold text-white">DESCRIPTION</div>
           <p className="font-normal text-xs ">{launch.details}</p>
@@ -26,7 +54,9 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch }) => {
       </div>
       <span className="mt-12 w-full max-w-md flex justify-center">
         <Link href={`/launches/${launch.id}`} passHref>
-          <Button>SHOW DETAIL</Button>
+          <a>
+            <Button>SHOW DETAIL</Button>
+          </a>
         </Link>
       </span>
     </>

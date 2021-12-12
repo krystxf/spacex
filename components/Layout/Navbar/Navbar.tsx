@@ -1,3 +1,4 @@
+import SpacexLogo from '@components/UI/SpacexLogo';
 import Link from 'next/link';
 import React from 'react';
 import NavbarItem from './NavbarItem';
@@ -10,7 +11,13 @@ const Navbar: React.FC<NavbarProps> = ({ pathname }) => {
   return (
     <PathnameContext.Provider value={pathname}>
       <nav className="fixed z-30 flex items-center justify-between w-full px-6 bg-black h-12 bottom-auto top-0">
-        <span className="flex justify-start gap-2">
+        <span className="flex justify-start gap-2 items-center">
+          <Link href="/" passHref>
+            <div className="w-[200px]">
+              <SpacexLogo />
+            </div>
+          </Link>
+
           <NavbarItem link="/" text="Launches" />
 
           <NavbarItem link="/missions" text="Missions" />

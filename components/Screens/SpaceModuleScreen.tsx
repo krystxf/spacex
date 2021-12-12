@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import PageHeading from '@components/UI/PageHeading';
 
 export type SpaceModuleScreenProps = { title: string };
 
@@ -9,18 +10,16 @@ const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
 
   return (
     <>
-      <div className="overflow-x-hidden bg-black">
+      <div
+        className="overflow-x-hidden bg-black"
+        onPointerMove={(e) => setOffset([-e.pageX / 400, -e.pageY / 400])}
+      >
         {/* TITLE */}
-        <div
-          className="absolute left-1/2 -translate-x-1/2 lg:translate-x-0 lg:right-[20%] top-[20%] z-10 lg:text-8xl text-6xl font-bold text-gray-300"
-          onPointerMove={(e) => setOffset([-e.pageX / 400, -e.pageY / 400])}
-        >
-          {title.toUpperCase()}
-        </div>
+        <PageHeading title={title} />
+
         {/* BACKGROUND IMAGE */}
         <motion.div
           className="relative w-[105vw] h-[105vh] text-white"
-          onPointerMove={(e) => setOffset([-e.pageX / 400, -e.pageY / 400])}
           style={{
             x: offset[0],
             y: offset[1] - 40,
@@ -35,7 +34,7 @@ const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
           />
           {/* SPACE MODULE IMAGE */}
           <motion.div
-            className="w-[80%] md:w-[800px] h-[80vh] absolute left-10 bottom-20 z-10"
+            className="w-[60%] h-[60%] absolute left-10 bottom-20 z-10"
             style={{
               x: offset[0],
               y: offset[1],
