@@ -10,8 +10,8 @@ export type NavbarProps = { pathname: string };
 const Navbar: React.FC<NavbarProps> = ({ pathname }) => {
   return (
     <PathnameContext.Provider value={pathname}>
-      <nav className="fixed z-30 flex items-center justify-between w-full px-6 bg-black h-12 bottom-auto top-0">
-        <span className="flex justify-start gap-2 items-center">
+      <nav className="fixed z-30 flex justify-between w-full px-6 bg-black h-12 bottom-auto top-0">
+        <span className="flex justify-start gap-2 items-center max-w-7xl w-full m-auto">
           <Link href="/" passHref>
             <div className="w-[200px]">
               <SpacexLogo />

@@ -1,7 +1,8 @@
 query Missions {
   missions {
-    manufacturers
     description
     id
+    manufacturers
+    name
   }
 }
