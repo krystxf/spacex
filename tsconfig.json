@@ -3,7 +3,9 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["components/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@lib/*": ["lib/*"],
+      "@graphql/*": ["lib/graphql/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

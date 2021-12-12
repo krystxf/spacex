@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from "next";
-import Image from "next/image";
 import Layout from "@components/Layout";
-import { gql } from "@apollo/client";
-import client from "lib/apollo-client";
+import client from "@lib/apollo-client"; 
+import CountUp from 'react-countup';
+import { RoadsterDocument, useRoadsterQuery } from "types/generated";
 
 const Roadster: NextPage<{
   roadster: {
@@ -28,17 +28,19 @@ const Roadster: NextPage<{
           <div className="flex justify-between mt-16">
             <FlexItem
               title="Distance from Earth"
-              value={`${FormatNumber(
-                roadster.earth_distance_km.toFixed(2)
-              )} km`}
+              value={
+                roadster.earth_distance_km}
+              suffix="km"
             />
             <FlexItem
               title="Distance from Mars"
-              value={`${FormatNumber(roadster.mars_distance_km.toFixed(2))} km`}
+              value={roadster.mars_distance_km}
+              suffix="km"
             />
             <FlexItem
               title="Velocity"
-              value={`${FormatNumber(roadster.speed_kph.toFixed(2))} km/h`}
+              value={(roadster.speed_kph)}
+              suffix="km/h"
             />
           </div>
         </div>
@@ -47,35 +49,33 @@ const Roadster: NextPage<{
   );
 };
 
-function FormatNumber(num: number | string) {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}
-
-const FlexItem: React.FC<{ title: string; value: string }> = ({
+ 
+const FlexItem: React.FC<{ title: string; value: number, suffix: string }> = ({
   title,
   value,
+  suffix
 }) => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center w-full">
       <h2>{title}</h2>
-      <h3>{value}</h3>
+      <h3>
+      <CountUp
+  start={0}
+  end={value}
+  duration={2}
+  separator=" "
+  decimals={2}
+  decimal="." 
+  suffix={` ${suffix}`} 
+/>
+        </h3>
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => { 
   const { data } = await client.query({
-    query: gql`
-      query Roadster {
-        roadster {
-          period_days
-          speed_kph
-          earth_distance_km
-          mars_distance_km
-          details
-        }
-      }
-    `,
+    query: RoadsterDocument,
   });
 
   return {

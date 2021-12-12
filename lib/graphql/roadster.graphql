@@ -1,0 +1,9 @@
+query Roadster {
+  roadster {
+    period_days
+    speed_kph
+    earth_distance_km
+    mars_distance_km
+    details
+  }
+}
