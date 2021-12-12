@@ -4,5 +4,8 @@ query Missions {
     id
     manufacturers
     name
+    payloads {
+      payload_mass_kg
+    }
   }
 }

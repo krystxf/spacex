@@ -1,15 +1,14 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const BoosterScreen: React.FC<{ title: string }> = ({ children, title }) => {
+const MissionsScreen: React.FC<{ title: string }> = ({ children, title }) => {
   return (
     <>
       <div
         className="bg-black min-h-screen"
         style={{
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundImage: 'url("/starman.webp")',
+          background: 'url("/FH_2.jpg") no-repeat center top fixed',
+          backgroundSize: 'cover',
         }}
       >
         <motion.div
@@ -18,16 +17,14 @@ const BoosterScreen: React.FC<{ title: string }> = ({ children, title }) => {
           animate={{ backgroundColor: '#00000086' }}
           transition={{ delay: 0.5, duration: 1, ease: 'easeInOut' }}
         >
-          <div className="max-w-4xl m-auto px-8 w-full min-h-screen pt-[10vh]">
-            <div className="text-6xl font-bold text-white pb-12">
-              {title.toUpperCase()}
-            </div>
-            {children}
+          <div className="w-full flex justify-center text-6xl font-bold text-white pb-12 pt-[10vh]">
+            {title.toUpperCase()}
           </div>
+          {children}
         </motion.div>
       </div>
     </>
   );
 };
 
-export default BoosterScreen;
+export default MissionsScreen;

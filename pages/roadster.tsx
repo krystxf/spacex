@@ -5,16 +5,9 @@ import CountUp from 'react-countup';
 import { RoadsterDocument, useRoadsterQuery } from 'types/generated';
 import { StarmanScreen } from '@components/Screens';
 import { motion } from 'framer-motion';
+import Roadster from 'types/roadster';
 
-const Roadster: NextPage<{
-  roadster: {
-    period_days: number;
-    speed_kph: number;
-    earth_distance_km: number;
-    mars_distance_km: number;
-    details: string;
-  };
-}> = ({ roadster }) => {
+const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
   return (
     <Layout pathname="/roadster">
       <StarmanScreen title="roadster to the mars">

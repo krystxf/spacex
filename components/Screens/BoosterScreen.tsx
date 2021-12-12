@@ -4,7 +4,7 @@ import React from 'react';
 const BoosterScreen: React.FC = ({ children }) => {
   return (
     <motion.div
-      className="bg-black min-h-screen"
+      className="min-h-screen"
       style={{
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

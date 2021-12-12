@@ -1328,7 +1328,7 @@ export type LaunchNextQuery = { __typename?: 'Query', launchNext?: { __typename?
 export type MissionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MissionsQuery = { __typename?: 'Query', missions?: Array<{ __typename?: 'Mission', description?: string | null | undefined, id?: string | null | undefined, manufacturers?: Array<string | null | undefined> | null | undefined, name?: string | null | undefined } | null | undefined> | null | undefined };
+export type MissionsQuery = { __typename?: 'Query', missions?: Array<{ __typename?: 'Mission', description?: string | null | undefined, id?: string | null | undefined, manufacturers?: Array<string | null | undefined> | null | undefined, name?: string | null | undefined, payloads?: Array<{ __typename?: 'Payload', payload_mass_kg?: number | null | undefined } | null | undefined> | null | undefined } | null | undefined> | null | undefined };
 
 export type RoadsterQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1389,6 +1389,9 @@ export const MissionsDocument = gql`
     id
     manufacturers
     name
+    payloads {
+      payload_mass_kg
+    }
   }
 }
     `;

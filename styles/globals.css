@@ -22,3 +22,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+p {
+  @apply text-lg text-justify break-words whitespace-pre-wrap;
+}
