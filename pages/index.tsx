@@ -1,86 +1,33 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import Layout from '@components/Layout';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import { Layout } from '@components/Layout';
+
+import React from 'react';
 import client from '@lib/apollo-client';
 import { LaunchNextDocument } from 'types/generated';
-import TimeAgo from 'react-timeago';
+import { LaunchTable } from '@components/LaunchTable';
+import { SpaceModuleScreen } from '@components/Screens';
 
 const Home: NextPage<{ launchNext: any }> = ({ launchNext }) => {
-  const [offset, setOffset] = useState([0, 0]);
-
   return (
     <Layout pathname="/">
-      <div className="overflow-x-hidden bg-black">
-        <motion.div
-          className="relative w-[105vw] h-[105vh] text-white"
-          onPointerMove={(e) => setOffset([-e.pageX / 400, -e.pageY / 400])}
-          style={{
-            x: offset[0],
-            y: offset[1] - 40,
-          }}
-        >
-          <Image
-            src="/background.webp"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            alt="Background picture"
-          />
-          <div className="w-[800px] h-[80vh] absolute right-24 top-40 z-10 text-8xl font-bold text-gray-300">
-            Launches
-          </div>
-
-          <motion.div
-            className="w-[800px] h-[80vh] absolute left-10 bottom-20 z-10"
-            style={{
-              x: offset[0],
-              y: offset[1],
-            }}
-          >
-            <Image
-              src="/dragon2.png"
-              layout="fill"
-              objectFit="contain"
-              objectPosition="center"
-              alt="Dragon module picture"
-            />
-          </motion.div>
-        </motion.div>
-      </div>
-      <div className="h-32 w-full from-transparent to-black bg-gradient-to-b -mt-40 relative z-20"></div>
-      <div className="bg-black w-full h-screen gap-4 px-4 relative pt-40 pl-14">
-        <Image
-          src="/Merlin.webp"
-          layout="fill"
-          objectFit="contain"
-          objectPosition="right"
-          alt="Merlin booster"
-        />
-        <div className="p-4 z-20 text-white absolute">
-          <h2 className="font-semibold text-3xl">UPCOMING:</h2>
-          <div className="flex flex-col text-white font-medium text-xl w-96 divide-y divide-gray-500">
-            <div className="flex justify-between items-center py-2">
-              <span>Rocket</span>
-              <span>{launchNext.rocket.rocket.name}</span>
-            </div>{' '}
-            <div className="flex justify-between items-center py-2">
-              <span>Mission</span>
-              <span>{launchNext.mission_name}</span>
-            </div>{' '}
-            <div className="flex justify-between items-center py-2">
-              <span>Launch date</span>
-              <span>
-                {new Date(launchNext.launch_date_utc) < new Date()
-                  ? 'unknown'
-                  : new Date(launchNext.launch_date_utc).toString()}
-              </span>
+      <SpaceModuleScreen title="launches" />
+      {/* UPCOMING LAUNCH */}
+      <div
+        className="bg-black min-h-screen"
+        style={{
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundImage:
+            'url("https://www.spacex.com/static/images/falcon-9/desktop/MerlinVac.webp")',
+        }}
+      >
+        <div className="w-full h-full md:bg-[#0000008e] bg-[#000000b6]">
+          <div className="max-w-7xl m-auto px-8 xl:px-4 w-full grid grid-cols-1 md:grid-cols-2 pt-20 min-h-screen gap-4 items-center">
+            <div className="text-white">
+              <h2 className="font-bold text-3xl">UPCOMING LAUNCH</h2>
+              <LaunchTable launch={launchNext} />
             </div>
-            <span className="">
-              <div className="font-medium text-xl py-2">Description:</div>
-              <p className="font-normal text-base ">{launchNext.details}</p>
-            </span>
           </div>
         </div>
       </div>

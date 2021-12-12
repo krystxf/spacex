@@ -1,12 +1,12 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import NextNprogress from "nextjs-progressbar";
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import NextNprogress from 'nextjs-progressbar';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <NextNprogress
-        color="#5c66f6"
+        color="#ffffff"
         height={2}
         options={{ showSpinner: false }}
         showOnShallow

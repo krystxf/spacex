@@ -1,8 +1,8 @@
-import type { GetServerSideProps, NextPage } from "next";
-import Layout from "@components/Layout";
-import client from "@lib/apollo-client"; 
+import type { GetServerSideProps, NextPage } from 'next';
+import { Layout } from '@components/Layout';
+import client from '@lib/apollo-client';
 import CountUp from 'react-countup';
-import { RoadsterDocument, useRoadsterQuery } from "types/generated";
+import { RoadsterDocument, useRoadsterQuery } from 'types/generated';
 
 const Roadster: NextPage<{
   roadster: {
@@ -18,6 +18,8 @@ const Roadster: NextPage<{
       <div
         className="relative w-full h-full text-white flex flex-row-reverse px-[20%]"
         style={{
+          backgroundPosition: 'bottom',
+          backgroundRepeat: 'no-repeat',
           backgroundImage:
             'url("https://www.spacex.com/static/images/backgrounds/mission_feature.webp")',
         }}
@@ -28,8 +30,7 @@ const Roadster: NextPage<{
           <div className="flex justify-between mt-16">
             <FlexItem
               title="Distance from Earth"
-              value={
-                roadster.earth_distance_km}
+              value={roadster.earth_distance_km}
               suffix="km"
             />
             <FlexItem
@@ -39,7 +40,7 @@ const Roadster: NextPage<{
             />
             <FlexItem
               title="Velocity"
-              value={(roadster.speed_kph)}
+              value={roadster.speed_kph}
               suffix="km/h"
             />
           </div>
@@ -49,31 +50,30 @@ const Roadster: NextPage<{
   );
 };
 
- 
-const FlexItem: React.FC<{ title: string; value: number, suffix: string }> = ({
+const FlexItem: React.FC<{ title: string; value: number; suffix: string }> = ({
   title,
   value,
-  suffix
+  suffix,
 }) => {
   return (
     <div className="flex flex-col items-center w-full">
       <h2>{title}</h2>
       <h3>
-      <CountUp
-  start={0}
-  end={value}
-  duration={2}
-  separator=" "
-  decimals={2}
-  decimal="." 
-  suffix={` ${suffix}`} 
-/>
-        </h3>
+        <CountUp
+          start={0}
+          end={value}
+          duration={2}
+          separator=" "
+          decimals={2}
+          decimal="."
+          suffix={` ${suffix}`}
+        />
+      </h3>
     </div>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => { 
+export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await client.query({
     query: RoadsterDocument,
   });
