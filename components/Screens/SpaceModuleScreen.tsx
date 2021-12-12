@@ -10,13 +10,13 @@ const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
 
   return (
     <>
+      {/* TITLE */}
+      <PageHeading title={title} />
+
       <div
         className="overflow-x-hidden bg-black"
         onPointerMove={(e) => setOffset([-e.pageX / 400, -e.pageY / 400])}
       >
-        {/* TITLE */}
-        <PageHeading title={title} />
-
         {/* BACKGROUND IMAGE */}
         <motion.div
           className="relative w-[105vw] h-[105vh] text-white"

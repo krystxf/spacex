@@ -20,19 +20,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-h1 {
-  @apply text-3xl font-bold pb-2;
-}
-
-h2 {
-  @apply text-lg font-semibold pb-2;
-}
-
-h3 {
-  @apply text-base pb-1;
-}
-
-p {
-  @apply text-lg text-justify break-words whitespace-pre-wrap;
-}

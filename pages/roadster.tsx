@@ -3,6 +3,7 @@ import { Layout } from '@components/Layout';
 import client from '@lib/apollo-client';
 import CountUp from 'react-countup';
 import { RoadsterDocument, useRoadsterQuery } from 'types/generated';
+import { StarmanScreen } from '@components/Screens';
 
 const Roadster: NextPage<{
   roadster: {
@@ -15,18 +16,9 @@ const Roadster: NextPage<{
 }> = ({ roadster }) => {
   return (
     <Layout pathname="/roadster">
-      <div
-        className="relative w-full h-full text-white flex flex-row-reverse px-[20%]"
-        style={{
-          backgroundPosition: 'bottom',
-          backgroundRepeat: 'no-repeat',
-          backgroundImage:
-            'url("https://www.spacex.com/static/images/backgrounds/mission_feature.webp")',
-        }}
-      >
-        <div className="mt-24">
-          <h1>Tesla Roadster trip to Mars</h1>
-          <p className="max-w-xl">{roadster.details}</p>
+      <StarmanScreen title="roadster to the mars">
+        <div>
+          <p className="w-full text-white text-lg">{roadster.details}</p>
           <div className="flex justify-between mt-16">
             <FlexItem
               title="Distance from Earth"
@@ -45,7 +37,7 @@ const Roadster: NextPage<{
             />
           </div>
         </div>
-      </div>
+      </StarmanScreen>
     </Layout>
   );
 };
@@ -56,9 +48,9 @@ const FlexItem: React.FC<{ title: string; value: number; suffix: string }> = ({
   suffix,
 }) => {
   return (
-    <div className="flex flex-col items-center w-full">
-      <h2>{title}</h2>
-      <h3>
+    <div className="text-white flex flex-col items-center w-full">
+      <h2 className="font-bold text-lg">{title.toLocaleUpperCase()}</h2>
+      <h3 className="font-semibold text-base">
         <CountUp
           start={0}
           end={value}
