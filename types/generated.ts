@@ -1320,6 +1320,11 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']>>;
 };
 
+export type LaunchNextQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LaunchNextQuery = { __typename?: 'Query', launchNext?: { __typename?: 'Launch', details?: string | null | undefined, id?: string | null | undefined, launch_date_unix?: any | null | undefined, launch_date_utc?: any | null | undefined, is_tentative?: boolean | null | undefined, upcoming?: boolean | null | undefined, mission_name?: string | null | undefined, static_fire_date_utc?: any | null | undefined, rocket?: { __typename?: 'LaunchRocket', rocket?: { __typename?: 'Rocket', name?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined };
+
 export type MissionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1331,6 +1336,52 @@ export type RoadsterQueryVariables = Exact<{ [key: string]: never; }>;
 export type RoadsterQuery = { __typename?: 'Query', roadster?: { __typename?: 'Roadster', period_days?: number | null | undefined, speed_kph?: number | null | undefined, earth_distance_km?: number | null | undefined, mars_distance_km?: number | null | undefined, details?: string | null | undefined } | null | undefined };
 
 
+export const LaunchNextDocument = gql`
+    query LaunchNext {
+  launchNext {
+    details
+    id
+    launch_date_unix
+    launch_date_utc
+    is_tentative
+    upcoming
+    mission_name
+    static_fire_date_utc
+    rocket {
+      rocket {
+        name
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useLaunchNextQuery__
+ *
+ * To run a query within a React component, call `useLaunchNextQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLaunchNextQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLaunchNextQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useLaunchNextQuery(baseOptions?: Apollo.QueryHookOptions<LaunchNextQuery, LaunchNextQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LaunchNextQuery, LaunchNextQueryVariables>(LaunchNextDocument, options);
+      }
+export function useLaunchNextLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchNextQuery, LaunchNextQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LaunchNextQuery, LaunchNextQueryVariables>(LaunchNextDocument, options);
+        }
+export type LaunchNextQueryHookResult = ReturnType<typeof useLaunchNextQuery>;
+export type LaunchNextLazyQueryHookResult = ReturnType<typeof useLaunchNextLazyQuery>;
+export type LaunchNextQueryResult = Apollo.QueryResult<LaunchNextQuery, LaunchNextQueryVariables>;
 export const MissionsDocument = gql`
     query Missions {
   missions {

@@ -1,6 +1,5 @@
-import { useRouter } from "next/router";
-import React from "react";
-import Navbar from "./Navbar";
+import Navbar from './Navbar';
+import React, { useRef, useState, useCallback, useLayoutEffect } from 'react';
 
 const Layout: React.FC<{ pathname: string }> = ({ pathname, children }) => {
   return (
