@@ -2,10 +2,14 @@ import type { GetServerSideProps, NextPage } from 'next';
 import { Layout } from '@components/Layout';
 import client from '@lib/apollo-client';
 import CountUp from 'react-countup';
-import { RoadsterDocument, useRoadsterQuery } from 'types/generated';
+import {
+  RoadsterDocument,
+  RoadsterQuery,
+  Roadster,
+  Maybe,
+} from 'types/generated';
 import { StarmanScreen } from '@components/Screens';
 import { motion } from 'framer-motion';
-import Roadster from 'types/roadster';
 
 const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
   return (
@@ -48,11 +52,11 @@ const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
 
 const FlexItem: React.FC<{
   title: string;
-  value: number;
+  value?: Maybe<number>;
   suffix: string;
   delay: number;
 }> = ({ title, value, suffix, delay }) => {
-  return (
+  return value ? (
     <motion.div
       className="text-white flex flex-col items-center w-full"
       initial={{ opacity: 0 }}
@@ -72,11 +76,11 @@ const FlexItem: React.FC<{
         />
       </h3>
     </motion.div>
-  );
+  ) : null;
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await client.query({
+  const { data }: { data: RoadsterQuery } = await client.query({
     query: RoadsterDocument,
   });
 

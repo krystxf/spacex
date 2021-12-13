@@ -1,10 +1,9 @@
 import Button from '@components/UI/Button';
 import Link from 'next/link';
+import { Launch } from 'types/generated';
 import LaunchTableRow from './Row';
 
-export type LaunchTableProps = { launch: any };
-
-const LaunchTable: React.FC<LaunchTableProps> = ({ launch }) => {
+const LaunchTable: React.FC<{ launch: Launch }> = ({ launch }) => {
   const plannedLaunch = new Date(launch.launch_date_utc).toLocaleDateString(
     'en-UK',
     {
@@ -29,9 +28,15 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch }) => {
   return (
     <>
       <div className="flex flex-col text-white font-medium divide-y divide-gray-500 max-w-md w-full ">
-        <LaunchTableRow title="Rocket" value={launch.rocket.rocket.name} />
+        <LaunchTableRow
+          title="Rocket"
+          value={launch.rocket?.rocket_name ?? 'unknown'}
+        />
 
-        <LaunchTableRow title="Mission" value={launch.mission_name} />
+        <LaunchTableRow
+          title="Mission"
+          value={launch.mission_name ?? 'unknown'}
+        />
 
         <LaunchTableRow
           title={

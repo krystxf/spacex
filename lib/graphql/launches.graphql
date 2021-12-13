@@ -9,9 +9,7 @@ query LaunchNext {
     mission_name
     static_fire_date_utc
     rocket {
-      rocket {
-        name
-      }
+      rocket_name
     }
   }
 }

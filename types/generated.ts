@@ -1323,7 +1323,7 @@ export type Uuid_Comparison_Exp = {
 export type LaunchNextQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LaunchNextQuery = { __typename?: 'Query', launchNext?: { __typename?: 'Launch', details?: string | null | undefined, id?: string | null | undefined, launch_date_unix?: any | null | undefined, launch_date_utc?: any | null | undefined, is_tentative?: boolean | null | undefined, upcoming?: boolean | null | undefined, mission_name?: string | null | undefined, static_fire_date_utc?: any | null | undefined, rocket?: { __typename?: 'LaunchRocket', rocket?: { __typename?: 'Rocket', name?: string | null | undefined } | null | undefined } | null | undefined } | null | undefined };
+export type LaunchNextQuery = { __typename?: 'Query', launchNext?: { __typename?: 'Launch', details?: string | null | undefined, id?: string | null | undefined, launch_date_unix?: any | null | undefined, launch_date_utc?: any | null | undefined, is_tentative?: boolean | null | undefined, upcoming?: boolean | null | undefined, mission_name?: string | null | undefined, static_fire_date_utc?: any | null | undefined, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null | undefined } | null | undefined } | null | undefined };
 
 export type MissionsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1348,9 +1348,7 @@ export const LaunchNextDocument = gql`
     mission_name
     static_fire_date_utc
     rocket {
-      rocket {
-        name
-      }
+      rocket_name
     }
   }
 }

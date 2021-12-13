@@ -3,13 +3,12 @@ import { Layout } from '@components/Layout';
 
 import React from 'react';
 import client from '@lib/apollo-client';
-import { MissionsDocument } from 'types/generated';
+import { Mission, MissionsDocument, MissionsQuery } from 'types/generated';
 import { MissionsScreen } from '@components/Screens';
 import { MissionTable } from '@components/MissionTable';
-import Mission from 'types/mission';
 
 const Missions: NextPage<{
-  missions: Array<Mission>;
+  missions: Mission[];
 }> = ({ missions }) => {
   return (
     <Layout pathname="/missions">
@@ -31,7 +30,7 @@ const Missions: NextPage<{
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await client.query({
+  const { data }: { data: MissionsQuery } = await client.query({
     query: MissionsDocument,
   });
 
