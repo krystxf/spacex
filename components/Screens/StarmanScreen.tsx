@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const BoosterScreen: React.FC<{ title: string }> = ({ children, title }) => {
+const BackgroundScreen: React.FC<{ title: string }> = ({ children, title }) => {
   return (
     <>
       <div
@@ -29,4 +29,4 @@ const BoosterScreen: React.FC<{ title: string }> = ({ children, title }) => {
   );
 };
 
-export default BoosterScreen;
+export default BackgroundScreen;

@@ -1323,7 +1323,17 @@ export type Uuid_Comparison_Exp = {
 export type LaunchNextQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type LaunchNextQuery = { __typename?: 'Query', launchNext?: { __typename?: 'Launch', details?: string | null | undefined, id?: string | null | undefined, launch_date_unix?: any | null | undefined, launch_date_utc?: any | null | undefined, is_tentative?: boolean | null | undefined, upcoming?: boolean | null | undefined, mission_name?: string | null | undefined, static_fire_date_utc?: any | null | undefined, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null | undefined } | null | undefined } | null | undefined };
+export type LaunchNextQuery = { __typename?: 'Query', launchNext?: { __typename?: 'Launch', details?: string | null | undefined, id?: string | null | undefined, launch_date_unix?: any | null | undefined, launch_date_utc?: any | null | undefined, is_tentative?: boolean | null | undefined, upcoming?: boolean | null | undefined, mission_name?: string | null | undefined, static_fire_date_utc?: any | null | undefined, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null | undefined } | null | undefined, links?: { __typename?: 'LaunchLinks', flickr_images?: Array<string | null | undefined> | null | undefined } | null | undefined } | null | undefined };
+
+export type LaunchesPastQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order?: InputMaybe<Scalars['String']>;
+  sort?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type LaunchesPastQuery = { __typename?: 'Query', launchesPast?: Array<{ __typename?: 'Launch', details?: string | null | undefined, id?: string | null | undefined, launch_date_unix?: any | null | undefined, launch_date_utc?: any | null | undefined, is_tentative?: boolean | null | undefined, upcoming?: boolean | null | undefined, mission_name?: string | null | undefined, static_fire_date_utc?: any | null | undefined, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null | undefined } | null | undefined, links?: { __typename?: 'LaunchLinks', flickr_images?: Array<string | null | undefined> | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
 export type MissionsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1349,6 +1359,9 @@ export const LaunchNextDocument = gql`
     static_fire_date_utc
     rocket {
       rocket_name
+    }
+    links {
+      flickr_images
     }
   }
 }
@@ -1380,6 +1393,57 @@ export function useLaunchNextLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type LaunchNextQueryHookResult = ReturnType<typeof useLaunchNextQuery>;
 export type LaunchNextLazyQueryHookResult = ReturnType<typeof useLaunchNextLazyQuery>;
 export type LaunchNextQueryResult = Apollo.QueryResult<LaunchNextQuery, LaunchNextQueryVariables>;
+export const LaunchesPastDocument = gql`
+    query LaunchesPast($limit: Int, $offset: Int, $order: String, $sort: String) {
+  launchesPast(limit: $limit, offset: $offset, order: $order, sort: $sort) {
+    details
+    id
+    launch_date_unix
+    launch_date_utc
+    is_tentative
+    upcoming
+    mission_name
+    static_fire_date_utc
+    rocket {
+      rocket_name
+    }
+    links {
+      flickr_images
+    }
+  }
+}
+    `;
+
+/**
+ * __useLaunchesPastQuery__
+ *
+ * To run a query within a React component, call `useLaunchesPastQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLaunchesPastQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLaunchesPastQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      offset: // value for 'offset'
+ *      order: // value for 'order'
+ *      sort: // value for 'sort'
+ *   },
+ * });
+ */
+export function useLaunchesPastQuery(baseOptions?: Apollo.QueryHookOptions<LaunchesPastQuery, LaunchesPastQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LaunchesPastQuery, LaunchesPastQueryVariables>(LaunchesPastDocument, options);
+      }
+export function useLaunchesPastLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchesPastQuery, LaunchesPastQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LaunchesPastQuery, LaunchesPastQueryVariables>(LaunchesPastDocument, options);
+        }
+export type LaunchesPastQueryHookResult = ReturnType<typeof useLaunchesPastQuery>;
+export type LaunchesPastLazyQueryHookResult = ReturnType<typeof useLaunchesPastLazyQuery>;
+export type LaunchesPastQueryResult = Apollo.QueryResult<LaunchesPastQuery, LaunchesPastQueryVariables>;
 export const MissionsDocument = gql`
     query Missions {
   missions {

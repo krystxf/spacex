@@ -1,18 +1,20 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const BoosterScreen: React.FC = ({ children }) => {
+const BackgroundScreen: React.FC<{
+  backgroundImage?: string;
+}> = ({ children, backgroundImage }) => {
   return (
     <motion.div
-      className="min-h-screen"
+      className="min-h-screen relative"
       style={{
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundImage:
-          'url("https://www.spacex.com/static/images/falcon-9/desktop/MerlinVac.webp")',
+        backgroundImage: `url(${backgroundImage})`,
       }}
     >
+      <div className="absolute w-full top-0 bg-gradient-to-b from-black to-transparent h-[10vh]" />
       <motion.div
         className="w-full h-full"
         initial={{ backgroundColor: '#000' }}
@@ -23,8 +25,9 @@ const BoosterScreen: React.FC = ({ children }) => {
           {children}
         </div>
       </motion.div>
+      <div className="absolute w-full bottom-0 bg-gradient-to-b to-black from-transparent h-[10vh]" />
     </motion.div>
   );
 };
 
-export default BoosterScreen;
+export default BackgroundScreen;
