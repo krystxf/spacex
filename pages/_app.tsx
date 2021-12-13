@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import NextNprogress from 'nextjs-progressbar';
 import { AnimatePresence } from 'framer-motion';
+import { Kbar } from '@components/Kbar';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           options={{ showSpinner: false }}
           showOnShallow
         />
-        <Component {...pageProps} />
+        <Kbar>
+          <Component {...pageProps} />
+        </Kbar>
       </AnimatePresence>
     </>
   );

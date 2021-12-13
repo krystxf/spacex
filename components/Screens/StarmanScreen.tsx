@@ -7,9 +7,8 @@ const BoosterScreen: React.FC<{ title: string }> = ({ children, title }) => {
       <div
         className="bg-black min-h-screen"
         style={{
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundImage: 'url("/starman.webp")',
+          background: 'url("/starman.webp") no-repeat center bottom fixed',
+          backgroundSize: '80vw',
         }}
       >
         <motion.div

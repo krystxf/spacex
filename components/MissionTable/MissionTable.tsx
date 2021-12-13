@@ -2,22 +2,19 @@ import Row from '@components/LaunchTable/Row';
 import Button from '@components/UI/Button';
 import Link from 'next/link';
 import CountUp from 'react-countup';
+import Mission from 'types/mission';
 
-const MissionTable = ({ mission }: { mission: any }) => {
-  // convert manufacturers to string
-  const manufacturers = mission.manufacturers.map(
-    (manufacturer: string, index: number) =>
-      `${index === 0 ? '' : ', '}${manufacturer}`
+const MissionTable = ({ mission }: { mission: Mission }) => {
+  // manufacturers separated by commas
+  const manufacturers = mission.manufacturers.reduce(
+    (prev, manufacturer, index) =>
+      prev + `${index === 0 ? '' : ', '}${manufacturer}`
   );
 
-  const totalPayload =
-    mission.payloads
-      .filter(
-        (x: { payload_mass_kg: number | null } | null) =>
-          x !== null && x.payload_mass_kg !== null
-      ) // filter out nulls
-      .map((payload: { payload_mass_kg: number }) => payload.payload_mass_kg)
-      .reduce((a: number, b: number) => a + b, 0) ?? 0; // sum all numbers in array
+  const totalPayload = mission?.payloads.reduce(
+    (prev, payload) => prev + (payload?.payload_mass_kg ?? 0),
+    0
+  ); // sum all numbers in array
 
   return (
     <div
