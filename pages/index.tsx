@@ -55,18 +55,16 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
             launch?.links?.flickr_images?.[imageIndex] ?? undefined;
 
           return launch ? (
-            <>
-              <BackgroundScreen backgroundImage={backgroundImage}>
+              <BackgroundScreen key={index} backgroundImage={backgroundImage}>
                 <div
                   className={`text-white ${
                     index % 2 === 0 ? 'md:col-start-2' : ''
                   }`}
                 >
                   <h2 className="font-bold text-3xl">{launch.mission_name}</h2>
-                  <LaunchTable key={launch?.id} launch={launch} hideMission />
+                  <LaunchTable launch={launch} hideMission />
                 </div>
               </BackgroundScreen>
-            </>
           ) : null;
         })
       )}

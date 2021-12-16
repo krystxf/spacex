@@ -1,0 +1,23 @@
+# Commands to start on workspace startup
+tasks:
+  - name: Setup
+    init: >
+      yarn;
+      gp sync-done setup;
+      exit;
+    command: echo "Setup done"
+  - name: Dev Server
+    init: gp sync-await setup
+    command: yarn dev
+
+# Ports to expose on workspace startup
+ports:
+  - port: 3000
+    onOpen: ignore
+    visibility: public
+
+vscode:
+  extensions:
+    - 'pkief.material-icon-theme'
+    - 'bradlc.vscode-tailwindcss'
+    - 'esbenp.prettier-vscode'

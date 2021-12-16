@@ -3,7 +3,7 @@ import FooterItem from './FooterItem';
 
 const Footer: React.FC = () => {
   return (
-    <div className="flex justify-center gap-8 text-[12px] py-6 font-bold bg-black">
+    <div className="flex md:justify-center gap-8 md:gap-0 flex-col md:flex-row text-[12px] md:py-6 font-bold md:bg-black">
       <FooterItem link="https://www.instagram.com/spacex/" text="instagram" />
 
       <FooterItem link="https://twitter.com/spacex" text="twitter" />
