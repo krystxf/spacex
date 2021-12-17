@@ -2,7 +2,7 @@ import { Menu, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import React, { Fragment } from 'react';
 import { MenuIcon } from "@heroicons/react/outline"
-import { Footer } from '../Footer';
+import FooterItem from '../Footer/FooterItem';
 
 const MobileNavbar = () => {
     return <Menu as="div" className="block md:hidden">
@@ -18,15 +18,25 @@ const MobileNavbar = () => {
             leaveFrom="transform scale-100 translate-x-[0]"
             leaveTo="transform translate-x-[500px]"
         >
-            <Menu.Items className='w-full max-w-[450px] absolute top-0 right-0 h-screen p-10'>
-                <div className="bg-black w-full max-w-xl absolute top-[-2.5vh] right-[-2vw] h-[105vh] -rotate-1 z-20" />
+            <Menu.Items className='w-full max-w-[250px] absolute top-0 right-0 h-screen p-10 bg-red-500'>
                 <div className='absolute z-30 right-20 top-20 flex flex-col justify-between' style={{ height: "calc(100% - 120px)" }}>
                     <div className='flex flex-col font-semibold text-lg'>
                         <MobileNavItem title='launches' link="/" />
                         <MobileNavItem title='missions' link="/missions" />
                         <MobileNavItem title='roadster' link="/roadster" />
                     </div>
-                    <Footer />
+                    <div className="flex gap-8 flex-col text-[12px] font-bold">
+                        <FooterItem link="https://www.instagram.com/spacex/" text="instagram" />
+
+                        <FooterItem link="https://twitter.com/spacex" text="twitter" />
+
+                        <FooterItem link="https://www.youtube.com/spacex" text="youtube" />
+
+                        <FooterItem
+                            link="https://www.linkedin.com/company/spacex/"
+                            text="linkedin"
+                        />
+                    </div>
                 </div>
             </Menu.Items>
         </Transition>
