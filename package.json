@@ -2,7 +2,7 @@
   "name": "hireme",
   "private": true,
   "scripts": {
-    "dev": "yarn codegen && next dev",
+    "dev": "concurrently --raw -n \"next,graphql codegen\" \"next dev\" \"yarn codegen --watch lib/**/*.graphql\"",
     "build": "yarn codegen && next build",
     "start": "next start",
     "lint": "next lint",
@@ -14,6 +14,7 @@
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
     "@types/react-timeago": "^4.1.3",
+    "concurrently": "^6.4.0",
     "framer": "^1.3.6",
     "framer-motion": "^5.4.5",
     "graphql": "^16.1.0",

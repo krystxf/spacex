@@ -18,7 +18,7 @@ const MobileNavbar = () => {
             leaveFrom="transform scale-100 translate-x-[0]"
             leaveTo="transform translate-x-[500px]"
         >
-            <Menu.Items className='w-full max-w-[250px] absolute top-0 right-0 h-screen p-10 bg-red-500'>
+            <Menu.Items className='w-full max-w-[250px] absolute top-0 right-0 h-screen p-10 bg-black'>
                 <div className='absolute z-30 right-20 top-20 flex flex-col justify-between' style={{ height: "calc(100% - 120px)" }}>
                     <div className='flex flex-col font-semibold text-lg'>
                         <MobileNavItem title='launches' link="/" />

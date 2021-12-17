@@ -1320,6 +1320,13 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']>>;
 };
 
+export type LaunchQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type LaunchQuery = { __typename?: 'Query', launch?: { __typename?: 'Launch', details?: string | null | undefined, is_tentative?: boolean | null | undefined, launch_date_local?: any | null | undefined, launch_success?: boolean | null | undefined, launch_year?: string | null | undefined, mission_name?: string | null | undefined, static_fire_date_utc?: any | null | undefined, launch_site?: { __typename?: 'LaunchSite', site_id?: string | null | undefined, site_name?: string | null | undefined, site_name_long?: string | null | undefined } | null | undefined, links?: { __typename?: 'LaunchLinks', article_link?: string | null | undefined, flickr_images?: Array<string | null | undefined> | null | undefined } | null | undefined, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null | undefined } | null | undefined } | null | undefined };
+
 export type LaunchNextQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1346,6 +1353,59 @@ export type RoadsterQueryVariables = Exact<{ [key: string]: never; }>;
 export type RoadsterQuery = { __typename?: 'Query', roadster?: { __typename?: 'Roadster', period_days?: number | null | undefined, speed_kph?: number | null | undefined, earth_distance_km?: number | null | undefined, mars_distance_km?: number | null | undefined, details?: string | null | undefined } | null | undefined };
 
 
+export const LaunchDocument = gql`
+    query Launch($id: ID!) {
+  launch(id: $id) {
+    details
+    is_tentative
+    launch_date_local
+    launch_site {
+      site_id
+      site_name
+      site_name_long
+    }
+    launch_success
+    launch_year
+    links {
+      article_link
+      flickr_images
+    }
+    mission_name
+    rocket {
+      rocket_name
+    }
+    static_fire_date_utc
+  }
+}
+    `;
+
+/**
+ * __useLaunchQuery__
+ *
+ * To run a query within a React component, call `useLaunchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLaunchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLaunchQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLaunchQuery(baseOptions: Apollo.QueryHookOptions<LaunchQuery, LaunchQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LaunchQuery, LaunchQueryVariables>(LaunchDocument, options);
+      }
+export function useLaunchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchQuery, LaunchQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LaunchQuery, LaunchQueryVariables>(LaunchDocument, options);
+        }
+export type LaunchQueryHookResult = ReturnType<typeof useLaunchQuery>;
+export type LaunchLazyQueryHookResult = ReturnType<typeof useLaunchLazyQuery>;
+export type LaunchQueryResult = Apollo.QueryResult<LaunchQuery, LaunchQueryVariables>;
 export const LaunchNextDocument = gql`
     query LaunchNext {
   launchNext {
