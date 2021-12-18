@@ -41,7 +41,9 @@ const Mission: NextPage<MissionPageProps> = ({ mission }) => {
                     <div className="py-4">
                         <h2 className="text-2xl font-bold">MANUFACTURERS:</h2>
                         <ul>
-                            {mission.manufacturers?.map(manufacturer => <li>{manufacturer}</li>)}
+                            {mission.manufacturers?.map(manufacturer =>
+                                <li key={manufacturer}>{manufacturer}</li>
+                            )}
                         </ul>
                     </div>
 
