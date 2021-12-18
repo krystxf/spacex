@@ -1,22 +1,12 @@
 import Button from '@components/UI/Button'
-import { Maybe } from 'graphql/jsutils/Maybe'
 import moment from 'moment'
 import Link from 'next/link'
+import { Launch, Maybe } from 'types/generated'
 import Row from './Row'
 import LaunchTableRow from './Row'
 
 type LaunchTableProps = {
-  launch: {
-    details?: Maybe<string>
-    id?: Maybe<string>
-    static_fire_date_utc?: any
-    launch_date_utc?: any
-    rocket?: Maybe<{
-      rocket_name?: Maybe<string>
-    }>
-    mission_name?: Maybe<string>
-    mission_id: Maybe<string[]> | undefined
-  };
+  launch: Launch | any
   hideMission?: boolean
 }
 
@@ -34,12 +24,12 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch, hideMission }) => {
 
   const actualLaunch = launch.static_fire_date_utc // if date is null return unknown
     ? new Date(launch.static_fire_date_utc).toLocaleDateString('en-UK', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric'
-    })
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric'
+      })
     : 'unknown'
 
   const missionId = launch?.mission_id ? launch.mission_id[0] : undefined
@@ -54,7 +44,15 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch, hideMission }) => {
         {hideMission !== true && (
           <Row
             title="mission"
-            value={missionId ? <Link href={`/missions/${missionId}`}>{launch.mission_name ?? ""}</Link> : <span>{launch.mission_name ?? ""}</span>}
+            value={
+              missionId ? (
+                <Link href={`/missions/${missionId}`}>
+                  {launch.mission_name ?? ''}
+                </Link>
+              ) : (
+                <span>{launch.mission_name ?? ''}</span>
+              )
+            }
           />
         )}
 
@@ -65,14 +63,14 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch, hideMission }) => {
               ? 'planned launch date'
               : 'launch date'
           }
-
-          value={<abbr title={new Date(launch.launch_date_utc) < new Date() ? moment(plannedLaunch).fromNow() : undefined}>{plannedLaunch}</abbr>}
+          value={launch.launch_date_utc}
+          isDate
         />
         {plannedLaunch !== actualLaunch && ( // show actual launch date only if it differs from planned
           <Row
-            title="launch date" value={<abbr title={new Date(actualLaunch) < new Date() ? moment(actualLaunch).fromNow() : undefined}> {actualLaunch}</abbr>}
-
-
+            title="launch date"
+            value={actualLaunch}
+            isDate={actualLaunch !== 'unknown'}
           />
         )}
         {launch.details && (

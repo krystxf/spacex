@@ -58,11 +58,19 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
           return launch ? (
             <BackgroundScreen key={index} backgroundImage={backgroundImage}>
               <div
-                className={`text-white ${index % 2 === 0 ? 'md:col-start-2' : ''
-                  }`}
+                className={`text-white ${
+                  index % 2 === 0 ? 'md:col-start-2' : ''
+                }`}
               >
-                {launch?.mission_id?.length ?? 0 > 0 ? <Link href={`/missions/${launch.mission_id}`}>{launch.mission_name ?? ""}</Link> : <h2 className="font-bold text-3xl">{launch.mission_name ?? ""}</h2>
-                }
+                {launch?.mission_id?.length ?? 0 > 0 ? (
+                  <Link href={`/missions/${launch.mission_id}`}>
+                    {launch.mission_name ?? ''}
+                  </Link>
+                ) : (
+                  <h2 className="font-bold text-3xl">
+                    {launch.mission_name ?? ''}
+                  </h2>
+                )}
                 <LaunchTable launch={launch} hideMission />
               </div>
             </BackgroundScreen>
