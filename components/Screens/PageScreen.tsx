@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-const BackgroundScreen: React.FC<{
+export type BackgroundScreenProps = {
   title: string
   backgroundImage: string
-}> = ({ children, title, backgroundImage }) => {
+}
+
+const BackgroundScreen: React.FC<BackgroundScreenProps> = ({ children, title, backgroundImage }) => {
   return (
     <>
       <div

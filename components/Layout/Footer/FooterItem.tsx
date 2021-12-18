@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-type FooterItemProps = {
+export type FooterItemProps = {
   link: string
   text: string
 }

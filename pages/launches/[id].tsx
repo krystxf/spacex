@@ -1,22 +1,18 @@
 import { Layout } from '@components/Layout'
-import { MissionsScreen, StarmanScreen } from '@components/Screens'
+import { PageScreen } from '@components/Screens'
 import Row from '@components/Tables/LaunchTable/Row'
 import client from '@lib/apollo-client'
 import { motion } from 'framer-motion'
-import moment from 'moment'
 import { NextPage, NextPageContext } from 'next'
 import Link from 'next/link'
 import Error404 from 'pages/404'
 import React from 'react'
-import CountUp from 'react-countup'
 import { LaunchDocument, Launch, LaunchQuery } from 'types/generated'
 
 type LaunchPageProps = { launch: Launch }
 
 const Launch: NextPage<LaunchPageProps> = ({ launch }) => {
   if (!launch) return <Error404 />
-
-  console.log(launch)
 
   const imageCount = launch?.links?.flickr_images?.length ?? 0 // get count of images from mission
   const imageIndex = Math.floor(Math.random() * imageCount) // get random image index
@@ -36,17 +32,17 @@ const Launch: NextPage<LaunchPageProps> = ({ launch }) => {
 
   const actualLaunch = launch.static_fire_date_utc // if date is null return unknown
     ? new Date(launch.static_fire_date_utc).toLocaleDateString('en-UK', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric'
-      })
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    })
     : 'unknown'
 
   return (
-    <Layout pathname="/">
-      <StarmanScreen
+    <Layout pathname="/" title={`Lanch ${launch.mission_name}`}>
+      <PageScreen
         title={`${launch.mission_name} LAUNCH`}
         backgroundImage={backgroundImage}
       >
@@ -105,7 +101,7 @@ const Launch: NextPage<LaunchPageProps> = ({ launch }) => {
           </div>
         </motion.div>
         <div className="flex justify-between mt-16" />
-      </StarmanScreen>
+      </PageScreen>
     </Layout>
   )
 }

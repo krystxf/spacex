@@ -27,7 +27,7 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
   const [theEnd, setTheEnd] = useState(false)
 
   return (
-    <Layout pathname="/">
+    <Layout pathname="/" title="Launches">
       <SpaceModuleScreen title="launches" />
       {/* UPCOMING LAUNCH */}
       {launchNext && (
@@ -82,9 +82,7 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
             </BackgroundScreen>
           }
           // REFRESH
-          refreshFunction={async () => {
-            await refetch()
-          }}
+          refreshFunction={async () => await refetch()}
           pullDownToRefresh
           pullDownToRefreshThreshold={80}
           pullDownToRefreshContent={
@@ -108,9 +106,8 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
               return launch ? (
                 <BackgroundScreen key={index} backgroundImage={backgroundImage}>
                   <div
-                    className={`text-white ${
-                      index % 2 === 0 ? 'md:col-start-2' : ''
-                    }`}
+                    className={`text-white ${index % 2 === 0 ? 'md:col-start-2' : ''
+                      }`}
                   >
                     {launch?.mission_id?.length ?? 0 > 0 ? (
                       <Link href={`/missions/${launch.mission_id}`}>

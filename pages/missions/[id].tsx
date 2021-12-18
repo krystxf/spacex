@@ -1,5 +1,5 @@
 import { Layout } from '@components/Layout'
-import { StarmanScreen } from '@components/Screens'
+import { PageScreen } from '@components/Screens'
 import Row from '@components/Tables/LaunchTable/Row'
 import client from '@lib/apollo-client'
 import { motion } from 'framer-motion'
@@ -16,8 +16,8 @@ const Mission: NextPage<MissionPageProps> = ({ mission }) => {
   if (!mission) return <Error404 />
 
   return (
-    <Layout pathname="/missions">
-      <StarmanScreen
+    <Layout pathname="/missions" title={`Mission ${mission.name}`}>
+      <PageScreen
         title={`mission ${mission.name}`}
         backgroundImage="/FH_2.jpg"
       >
@@ -102,7 +102,7 @@ const Mission: NextPage<MissionPageProps> = ({ mission }) => {
           )}
         </motion.div>
         <div className="flex justify-between mt-16" />
-      </StarmanScreen>
+      </PageScreen>
     </Layout>
   )
 }

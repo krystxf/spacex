@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 const Error404: NextPage = () => {
   return (
-    <Layout pathname="/">
+    <Layout pathname="/" title="404 Page not found">
       {/* TITLE */}
       <div className="absolute -translate-x-1/2 left-[50%] top-[20%] z-10 text-6xl font-bold text-white flex flex-col gap-12">
         PAGE NOT FOUND

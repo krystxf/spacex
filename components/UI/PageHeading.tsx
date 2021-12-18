@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-const PageHeading: React.FC<{ title: string }> = ({ title }) => {
+export type PageHeadingProps = { title: string }
+
+const PageHeading: React.FC<PageHeadingProps> = ({ title }) => {
   return (
     <motion.div
       className="absolute left-0 z-10 top-[20%] text-6xl font-bold w-full flex justify-center text-white"

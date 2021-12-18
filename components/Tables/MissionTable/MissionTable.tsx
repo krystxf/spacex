@@ -4,7 +4,9 @@ import Link from 'next/link'
 import CountUp from 'react-countup'
 import { Mission } from 'types/generated'
 
-const MissionTable = ({ mission }: { mission: Mission }) => {
+export type MissionTableProps = { mission: Mission };
+
+const MissionTable: React.FC<MissionTableProps> = ({ mission }) => {
   // manufacturers separated by commas
   const manufacturers = mission.manufacturers?.reduce(
     (prev, manufacturer, index) =>

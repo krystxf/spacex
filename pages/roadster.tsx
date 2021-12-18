@@ -8,13 +8,13 @@ import {
   Roadster,
   Maybe
 } from 'types/generated'
-import { StarmanScreen } from '@components/Screens'
+import { PageScreen } from '@components/Screens'
 import { motion } from 'framer-motion'
 
 const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
   return (
-    <Layout pathname="/roadster">
-      <StarmanScreen
+    <Layout pathname="/roadster" title="Roadster">
+      <PageScreen
         title="roadster to the mars"
         backgroundImage="/starman.webp"
       >
@@ -48,7 +48,7 @@ const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
             />
           </div>
         </div>
-      </StarmanScreen>
+      </PageScreen>
     </Layout>
   )
 }

@@ -1,5 +1,4 @@
 import Button from '@components/UI/Button'
-import moment from 'moment'
 import Link from 'next/link'
 import { Launch, Maybe } from 'types/generated'
 import Row from './Row'
@@ -24,12 +23,12 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch, hideMission }) => {
 
   const actualLaunch = launch.static_fire_date_utc // if date is null return unknown
     ? new Date(launch.static_fire_date_utc).toLocaleDateString('en-UK', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric'
-      })
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    })
     : 'unknown'
 
   const missionId = launch?.mission_id ? launch.mission_id[0] : undefined

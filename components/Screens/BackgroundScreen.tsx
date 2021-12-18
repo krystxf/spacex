@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-const BackgroundScreen: React.FC<{
+export type BackgroundScreenProps = {
   backgroundImage?: string
-}> = ({ children, backgroundImage }) => {
+};
+
+const BackgroundScreen: React.FC<BackgroundScreenProps> = ({ children, backgroundImage }) => {
   return (
     <motion.div
       className="min-h-screen relative"

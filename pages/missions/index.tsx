@@ -11,7 +11,7 @@ const Missions: NextPage<{
   missions: Mission[]
 }> = ({ missions }) => {
   return (
-    <Layout pathname="/missions">
+    <Layout pathname="/missions" title="Missions">
       <MissionsScreen title="missions">
         <div className="max-w-7xl m-auto w-full flex items-center flex-col min-h-screen gap-16 py-16 px-8">
           {missions.map((mission, index: number) => (

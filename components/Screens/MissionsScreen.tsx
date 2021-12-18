@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-const MissionsScreen: React.FC<{ title: string }> = ({ children, title }) => {
+export type MissionsScreenProps = { title: string }
+
+const MissionsScreen: React.FC<MissionsScreenProps> = ({ children, title }) => {
   return (
     <>
       <div
