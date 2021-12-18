@@ -1342,6 +1342,13 @@ export type LaunchesPastQueryVariables = Exact<{
 
 export type LaunchesPastQuery = { __typename?: 'Query', launchesPast?: Array<{ __typename?: 'Launch', details?: string | null | undefined, id?: string | null | undefined, launch_date_unix?: any | null | undefined, launch_date_utc?: any | null | undefined, is_tentative?: boolean | null | undefined, upcoming?: boolean | null | undefined, mission_name?: string | null | undefined, static_fire_date_utc?: any | null | undefined, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null | undefined } | null | undefined, links?: { __typename?: 'LaunchLinks', flickr_images?: Array<string | null | undefined> | null | undefined } | null | undefined } | null | undefined> | null | undefined };
 
+export type MissionQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type MissionQuery = { __typename?: 'Query', mission?: { __typename?: 'Mission', description?: string | null | undefined, manufacturers?: Array<string | null | undefined> | null | undefined, name?: string | null | undefined, twitter?: string | null | undefined, website?: string | null | undefined, wikipedia?: string | null | undefined, payloads?: Array<{ __typename?: 'Payload', customers?: Array<string | null | undefined> | null | undefined, manufacturer?: string | null | undefined, nationality?: string | null | undefined, payload_mass_kg?: number | null | undefined, payload_type?: string | null | undefined } | null | undefined> | null | undefined } | null | undefined };
+
 export type MissionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1504,6 +1511,53 @@ export function useLaunchesPastLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type LaunchesPastQueryHookResult = ReturnType<typeof useLaunchesPastQuery>;
 export type LaunchesPastLazyQueryHookResult = ReturnType<typeof useLaunchesPastLazyQuery>;
 export type LaunchesPastQueryResult = Apollo.QueryResult<LaunchesPastQuery, LaunchesPastQueryVariables>;
+export const MissionDocument = gql`
+    query Mission($id: ID!) {
+  mission(id: $id) {
+    description
+    manufacturers
+    name
+    twitter
+    website
+    wikipedia
+    payloads {
+      customers
+      manufacturer
+      nationality
+      payload_mass_kg
+      payload_type
+    }
+  }
+}
+    `;
+
+/**
+ * __useMissionQuery__
+ *
+ * To run a query within a React component, call `useMissionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMissionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMissionQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useMissionQuery(baseOptions: Apollo.QueryHookOptions<MissionQuery, MissionQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MissionQuery, MissionQueryVariables>(MissionDocument, options);
+      }
+export function useMissionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MissionQuery, MissionQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MissionQuery, MissionQueryVariables>(MissionDocument, options);
+        }
+export type MissionQueryHookResult = ReturnType<typeof useMissionQuery>;
+export type MissionLazyQueryHookResult = ReturnType<typeof useMissionLazyQuery>;
+export type MissionQueryResult = Apollo.QueryResult<MissionQuery, MissionQueryVariables>;
 export const MissionsDocument = gql`
     query Missions {
   missions {

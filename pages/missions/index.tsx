@@ -5,7 +5,7 @@ import React from 'react';
 import client from '@lib/apollo-client';
 import { Mission, MissionsDocument, MissionsQuery } from 'types/generated';
 import { MissionsScreen } from '@components/Screens';
-import { MissionTable } from '@components/MissionTable';
+import { MissionTable } from '@components/Tables/MissionTable';
 
 const Missions: NextPage<{
   missions: Mission[];

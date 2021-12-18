@@ -1,4 +1,4 @@
-import Row from '@components/LaunchTable/Row';
+import Row from '@components/Tables/LaunchTable/Row';
 import Button from '@components/UI/Button';
 import Link from 'next/link';
 import CountUp from 'react-countup';

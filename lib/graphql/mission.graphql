@@ -1,0 +1,17 @@
+query Mission($id: ID!) {
+  mission(id: $id) {
+    description
+    manufacturers
+    name
+    twitter
+    website
+    wikipedia
+    payloads {
+      customers
+      manufacturer
+      nationality
+      payload_mass_kg
+      payload_type
+    }
+  }
+}

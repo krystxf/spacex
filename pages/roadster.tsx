@@ -14,7 +14,7 @@ import { motion } from 'framer-motion';
 const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
   return (
     <Layout pathname="/roadster">
-      <StarmanScreen title="roadster to the mars">
+      <StarmanScreen title="roadster to the mars" backgroundImage='/starman.webp'>
         <div>
           <motion.p
             className="w-full text-white text-lg"
@@ -24,7 +24,7 @@ const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
           >
             {roadster.details}
           </motion.p>
-          <div className="flex justify-between mt-16">
+          <div className="flex md:flex-row flex-col gap-16 md:gap-0 justify-between mt-16">
             <FlexItem
               title="Distance from Earth"
               value={roadster.earth_distance_km}

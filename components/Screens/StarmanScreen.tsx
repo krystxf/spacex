@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const BackgroundScreen: React.FC<{ title: string }> = ({ children, title }) => {
+const BackgroundScreen: React.FC<{ title: string, backgroundImage: string }> = ({ children, title, backgroundImage }) => {
   return (
     <>
       <div
         className="bg-black min-h-screen"
         style={{
-          background: 'url("/starman.webp") no-repeat center bottom fixed',
-          backgroundSize: '80vw',
+          background: `url(${backgroundImage}) no-repeat center top fixed`,
         }}
       >
         <motion.div

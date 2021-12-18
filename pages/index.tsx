@@ -9,7 +9,7 @@ import {
   LaunchNextQuery,
   useLaunchesPastQuery,
 } from 'types/generated';
-import { LaunchTable } from '@components/LaunchTable';
+import { LaunchTable } from '@components/Tables/LaunchTable';
 import { BackgroundScreen, SpaceModuleScreen } from '@components/Screens';
 import Loading from '@components/UI/Loading';
 
