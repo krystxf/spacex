@@ -12,6 +12,7 @@ import {
 import { LaunchTable } from '@components/Tables/LaunchTable'
 import { BackgroundScreen, SpaceModuleScreen } from '@components/Screens'
 import Loading from '@components/UI/Loading'
+import Link from 'next/link'
 
 const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
   const { data, loading, error } = useLaunchesPastQuery({
@@ -43,7 +44,7 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
                 ? 'FETCHING LAUNCHES'
                 : 'SOMETHING WENT WRONG, TRY REFRESHING PAGE'}
             </h2>
-            {loading && <Loading />}{' '}
+            {loading && <Loading />}
           </div>
         </BackgroundScreen>
       ) : (
@@ -57,11 +58,11 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
           return launch ? (
             <BackgroundScreen key={index} backgroundImage={backgroundImage}>
               <div
-                className={`text-white ${
-                  index % 2 === 0 ? 'md:col-start-2' : ''
-                }`}
+                className={`text-white ${index % 2 === 0 ? 'md:col-start-2' : ''
+                  }`}
               >
-                <h2 className="font-bold text-3xl">{launch.mission_name}</h2>
+                {launch?.mission_id?.length ?? 0 > 0 ? <Link href={`/missions/${launch.mission_id}`}>{launch.mission_name ?? ""}</Link> : <h2 className="font-bold text-3xl">{launch.mission_name ?? ""}</h2>
+                }
                 <LaunchTable launch={launch} hideMission />
               </div>
             </BackgroundScreen>

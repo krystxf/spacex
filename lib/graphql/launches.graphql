@@ -7,6 +7,7 @@ query LaunchNext {
     is_tentative
     upcoming
     mission_name
+    mission_id
     static_fire_date_utc
     rocket {
       rocket_name
@@ -26,6 +27,7 @@ query LaunchesPast($limit: Int, $offset: Int, $order: String, $sort: String) {
     is_tentative
     upcoming
     mission_name
+    mission_id
     static_fire_date_utc
     rocket {
       rocket_name

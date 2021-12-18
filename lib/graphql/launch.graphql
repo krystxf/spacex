@@ -2,7 +2,7 @@ query Launch($id: ID!) {
   launch(id: $id) {
     details
     is_tentative
-    launch_date_local
+    launch_date_utc
     launch_site {
       site_id
       site_name
@@ -14,6 +14,7 @@ query Launch($id: ID!) {
       article_link
       flickr_images
     }
+    mission_id
     mission_name
     rocket {
       rocket_name
