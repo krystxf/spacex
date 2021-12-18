@@ -1,5 +1,5 @@
 import { Layout } from '@components/Layout'
-import { MissionsScreen, StarmanScreen } from '@components/Screens'
+import { StarmanScreen } from '@components/Screens'
 import Row from '@components/Tables/LaunchTable/Row'
 import client from '@lib/apollo-client'
 import { motion } from 'framer-motion'
@@ -31,7 +31,7 @@ const Mission: NextPage<MissionPageProps> = ({ mission }) => {
           {mission.description}
           {mission.wikipedia && (
             <div className="pt-4">
-              More on
+              {'More on '}
               <Link href={mission.wikipedia}>
                 <a className="underline hover:text-gray-200 transition-all duration-200 ease-linear">
                   wikipedia

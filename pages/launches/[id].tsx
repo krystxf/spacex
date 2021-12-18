@@ -69,7 +69,9 @@ const Launch: NextPage<LaunchPageProps> = ({ launch }) => {
                   value={
                     launch?.mission_id?.length ?? 0 > 0 ? (
                       <Link href={`/missions/${launch.mission_id}`}>
-                        {JSON.stringify(launch.mission_id) ?? ''}
+                        <a className="font-bold text-3xl">
+                          {launch.mission_name ?? ''}
+                        </a>
                       </Link>
                     ) : (
                       <span>{launch.mission_name ?? ''}</span>
