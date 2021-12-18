@@ -1,14 +1,14 @@
-import type { GetServerSideProps, NextPage } from 'next';
-import { Layout } from '@components/Layout';
+import type { GetServerSideProps, NextPage } from 'next'
+import { Layout } from '@components/Layout'
 
-import React from 'react';
-import client from '@lib/apollo-client';
-import { Mission, MissionsDocument, MissionsQuery } from 'types/generated';
-import { MissionsScreen } from '@components/Screens';
-import { MissionTable } from '@components/Tables/MissionTable';
+import React from 'react'
+import client from '@lib/apollo-client'
+import { Mission, MissionsDocument, MissionsQuery } from 'types/generated'
+import { MissionsScreen } from '@components/Screens'
+import { MissionTable } from '@components/Tables/MissionTable'
 
 const Missions: NextPage<{
-  missions: Mission[];
+  missions: Mission[]
 }> = ({ missions }) => {
   return (
     <Layout pathname="/missions">
@@ -26,19 +26,19 @@ const Missions: NextPage<{
         </div>
       </MissionsScreen>
     </Layout>
-  );
-};
+  )
+}
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { data }: { data: MissionsQuery } = await client.query({
-    query: MissionsDocument,
-  });
+    query: MissionsDocument
+  })
 
   return {
     props: {
-      missions: data.missions,
-    },
-  };
-};
+      missions: data.missions
+    }
+  }
+}
 
-export default Missions;
+export default Missions

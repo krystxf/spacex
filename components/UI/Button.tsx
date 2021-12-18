@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion'
+import React from 'react'
 
 const Button: React.FC = ({ children }) => {
   return (
@@ -9,7 +9,7 @@ const Button: React.FC = ({ children }) => {
     >
       {children}
     </motion.button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

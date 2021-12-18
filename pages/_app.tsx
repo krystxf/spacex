@@ -1,10 +1,10 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import NextNprogress from 'nextjs-progressbar';
-import { AnimatePresence } from 'framer-motion';
-import { Kbar } from '@components/Kbar';
-import { ApolloProvider } from '@apollo/client';
-import client from '@lib/apollo-client';
+import '../styles/globals.css'
+import type { AppProps } from 'next/app'
+import NextNprogress from 'nextjs-progressbar'
+import { AnimatePresence } from 'framer-motion'
+import { Kbar } from '@components/Kbar'
+import { ApolloProvider } from '@apollo/client'
+import client from '@lib/apollo-client'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Kbar>
       </AnimatePresence>
     </ApolloProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

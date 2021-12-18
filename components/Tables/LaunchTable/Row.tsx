@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-export type LaunchTableRowProps = { title: string; value: string };
+export type LaunchTableRowProps = { title: string; value: string }
 
 const LaunchTableRow: React.FC<LaunchTableRowProps> = ({ title, value }) => {
   return (
@@ -8,7 +8,7 @@ const LaunchTableRow: React.FC<LaunchTableRowProps> = ({ title, value }) => {
       <span>{title.toUpperCase()}</span>
       <span>{value}</span>
     </div>
-  );
-};
+  )
+}
 
-export default LaunchTableRow;
+export default LaunchTableRow

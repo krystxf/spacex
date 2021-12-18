@@ -1,17 +1,17 @@
-import type { GetServerSideProps, NextPage } from 'next';
-import { Layout } from '@components/Layout';
+import type { GetServerSideProps, NextPage } from 'next'
+import { Layout } from '@components/Layout'
 
-import React from 'react';
-import client from '@lib/apollo-client';
+import React from 'react'
+import client from '@lib/apollo-client'
 import {
   Launch,
   LaunchNextDocument,
   LaunchNextQuery,
-  useLaunchesPastQuery,
-} from 'types/generated';
-import { LaunchTable } from '@components/Tables/LaunchTable';
-import { BackgroundScreen, SpaceModuleScreen } from '@components/Screens';
-import Loading from '@components/UI/Loading';
+  useLaunchesPastQuery
+} from 'types/generated'
+import { LaunchTable } from '@components/Tables/LaunchTable'
+import { BackgroundScreen, SpaceModuleScreen } from '@components/Screens'
+import Loading from '@components/UI/Loading'
 
 const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
   const { data, loading, error } = useLaunchesPastQuery({
@@ -19,9 +19,9 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
       offset: 0,
       limit: 10,
       order: 'asc',
-      sort: 'static_fire_date_utc',
-    },
-  });
+      sort: 'static_fire_date_utc'
+    }
+  })
 
   return (
     <Layout pathname="/">
@@ -49,39 +49,39 @@ const Home: NextPage<{ launchNext: Launch }> = ({ launchNext }) => {
       ) : (
         data?.launchesPast &&
         data.launchesPast.map((launch, index) => {
-          const imageCount = launch?.links?.flickr_images?.length ?? 0; // get count of images from mission
-          const imageIndex = Math.floor(Math.random() * imageCount); // get random image index
+          const imageCount = launch?.links?.flickr_images?.length ?? 0 // get count of images from mission
+          const imageIndex = Math.floor(Math.random() * imageCount) // get random image index
           const backgroundImage =
-            launch?.links?.flickr_images?.[imageIndex] ?? undefined;
+            launch?.links?.flickr_images?.[imageIndex] ?? undefined
 
           return launch ? (
-              <BackgroundScreen key={index} backgroundImage={backgroundImage}>
-                <div
-                  className={`text-white ${
-                    index % 2 === 0 ? 'md:col-start-2' : ''
-                  }`}
-                >
-                  <h2 className="font-bold text-3xl">{launch.mission_name}</h2>
-                  <LaunchTable launch={launch} hideMission />
-                </div>
-              </BackgroundScreen>
-          ) : null;
+            <BackgroundScreen key={index} backgroundImage={backgroundImage}>
+              <div
+                className={`text-white ${
+                  index % 2 === 0 ? 'md:col-start-2' : ''
+                }`}
+              >
+                <h2 className="font-bold text-3xl">{launch.mission_name}</h2>
+                <LaunchTable launch={launch} hideMission />
+              </div>
+            </BackgroundScreen>
+          ) : null
         })
       )}
     </Layout>
-  );
-};
+  )
+}
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { data }: { data: LaunchNextQuery } = await client.query({
-    query: LaunchNextDocument,
-  });
+    query: LaunchNextDocument
+  })
 
   return {
     props: {
-      launchNext: data.launchNext,
-    },
-  };
-};
+      launchNext: data.launchNext
+    }
+  }
+}
 
-export default Home;
+export default Home

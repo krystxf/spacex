@@ -1,8 +1,8 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion'
+import React from 'react'
 
 const BackgroundScreen: React.FC<{
-  backgroundImage?: string;
+  backgroundImage?: string
 }> = ({ children, backgroundImage }) => {
   return (
     <motion.div
@@ -11,7 +11,7 @@ const BackgroundScreen: React.FC<{
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${backgroundImage})`
       }}
     >
       <div className="absolute w-full top-0 bg-gradient-to-b from-black to-transparent h-[10vh]" />
@@ -27,7 +27,7 @@ const BackgroundScreen: React.FC<{
       </motion.div>
       <div className="absolute w-full bottom-0 bg-gradient-to-b to-black from-transparent h-[10vh]" />
     </motion.div>
-  );
-};
+  )
+}
 
-export default BackgroundScreen;
+export default BackgroundScreen

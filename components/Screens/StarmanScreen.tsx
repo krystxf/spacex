@@ -1,13 +1,16 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion'
+import React from 'react'
 
-const BackgroundScreen: React.FC<{ title: string, backgroundImage: string }> = ({ children, title, backgroundImage }) => {
+const BackgroundScreen: React.FC<{
+  title: string
+  backgroundImage: string
+}> = ({ children, title, backgroundImage }) => {
   return (
     <>
       <div
         className="bg-black min-h-screen"
         style={{
-          background: `url(${backgroundImage}) no-repeat center top fixed`,
+          background: `url(${backgroundImage}) no-repeat center top fixed`
         }}
       >
         <motion.div
@@ -25,7 +28,7 @@ const BackgroundScreen: React.FC<{ title: string, backgroundImage: string }> = (
         </motion.div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default BackgroundScreen;
+export default BackgroundScreen

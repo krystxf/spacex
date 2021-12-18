@@ -1,5 +1,5 @@
-import React from 'react';
-import FooterItem from './FooterItem';
+import React from 'react'
+import FooterItem from './FooterItem'
 
 const Footer: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         text="linkedin"
       />
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

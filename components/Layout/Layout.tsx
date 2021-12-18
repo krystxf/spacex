@@ -1,7 +1,7 @@
-import { Navbar } from './Navbar';
-import React from 'react';
-import { Footer } from './Footer';
-import { motion } from 'framer-motion';
+import { Navbar } from './Navbar'
+import React from 'react'
+import { Footer } from './Footer'
+import { motion } from 'framer-motion'
 
 const Layout: React.FC<{ pathname: string }> = ({ pathname, children }) => {
   return (
@@ -21,7 +21,7 @@ const Layout: React.FC<{ pathname: string }> = ({ pathname, children }) => {
       </div>
       <Footer />
     </motion.div>
-  );
-};
+  )
+}
 
-export default Layout;
+export default Layout

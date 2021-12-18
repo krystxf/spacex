@@ -1,9 +1,9 @@
-import type { NextPage } from 'next';
-import { Layout } from '@components/Layout';
-import React from 'react';
-import Image from 'next/image';
-import Button from '@components/UI/Button';
-import Link from 'next/link';
+import type { NextPage } from 'next'
+import { Layout } from '@components/Layout'
+import React from 'react'
+import Image from 'next/image'
+import Button from '@components/UI/Button'
+import Link from 'next/link'
 
 const Error404: NextPage = () => {
   return (
@@ -31,7 +31,7 @@ const Error404: NextPage = () => {
         />
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default Error404;
+export default Error404

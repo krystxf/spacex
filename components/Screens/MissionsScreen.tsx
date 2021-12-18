@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion'
+import React from 'react'
 
 const MissionsScreen: React.FC<{ title: string }> = ({ children, title }) => {
   return (
@@ -8,7 +8,7 @@ const MissionsScreen: React.FC<{ title: string }> = ({ children, title }) => {
         className="bg-black min-h-screen"
         style={{
           background: 'url("/FH_2.jpg") no-repeat center top fixed',
-          backgroundSize: 'cover',
+          backgroundSize: 'cover'
         }}
       >
         <motion.div
@@ -24,7 +24,7 @@ const MissionsScreen: React.FC<{ title: string }> = ({ children, title }) => {
         </motion.div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default MissionsScreen;
+export default MissionsScreen

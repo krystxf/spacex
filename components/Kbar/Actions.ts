@@ -1,4 +1,4 @@
-import { NextRouter } from 'next/router';
+import { NextRouter } from 'next/router'
 
 const Actions = (router: NextRouter) => {
   return [
@@ -8,7 +8,7 @@ const Actions = (router: NextRouter) => {
       name: 'Launches',
       shortcut: ['l'],
       keywords: 'launches main rocket',
-      perform: () => router.push('/'),
+      perform: () => router.push('/')
     },
     // MISSIONS
     {
@@ -16,7 +16,7 @@ const Actions = (router: NextRouter) => {
       name: 'Missions',
       shortcut: ['m'],
       keywords: 'missions',
-      perform: () => router.push('/missions'),
+      perform: () => router.push('/missions')
     },
     // ROADSTER
     {
@@ -24,9 +24,9 @@ const Actions = (router: NextRouter) => {
       name: 'Roadster',
       shortcut: ['r'],
       keywords: 'roadster starman tesla',
-      perform: () => router.push('/roadster'),
-    },
-  ];
-};
+      perform: () => router.push('/roadster')
+    }
+  ]
+}
 
-export default Actions;
+export default Actions

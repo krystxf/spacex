@@ -1,21 +1,21 @@
-import Link from 'next/link';
-import { useContext } from 'react';
-import { PathnameContext } from './Navbar';
+import Link from 'next/link'
+import { useContext } from 'react'
+import { PathnameContext } from './Navbar'
 
 type NavbarItemProps = {
-  link: string;
-  text: string;
-  hideOnMd?: boolean;
-  hideOnSm?: boolean;
-};
+  link: string
+  text: string
+  hideOnMd?: boolean
+  hideOnSm?: boolean
+}
 
 const NavbarItem: React.FC<NavbarItemProps> = ({
   link,
   text,
   hideOnMd,
-  hideOnSm,
+  hideOnSm
 }) => {
-  const pathnameContext = useContext(PathnameContext);
+  const pathnameContext = useContext(PathnameContext)
 
   return (
     <Link href={link} passHref>
@@ -33,7 +33,7 @@ const NavbarItem: React.FC<NavbarItemProps> = ({
         <div className="px-3 h-full font-bold py-1.5">{text.toUpperCase()}</div>
       </a>
     </Link>
-  );
-};
+  )
+}
 
-export default NavbarItem;
+export default NavbarItem

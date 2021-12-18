@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export const SpacexLogo = () => (
   <svg version="1.1" x="0px" y="0px" viewBox="0 0 400 50">
@@ -60,6 +60,6 @@ c6,0,8.1-1.7,9.1-5.8h-34.8V23.9z"
       ></path>
     </g>
   </svg>
-);
+)
 
-export default SpacexLogo;
+export default SpacexLogo

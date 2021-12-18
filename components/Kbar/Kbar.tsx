@@ -3,15 +3,15 @@ import {
   KBarPortal,
   KBarPositioner,
   KBarProvider,
-  KBarSearch,
-} from 'kbar';
-import { useRouter } from 'next/router';
-import React from 'react';
-import Actions from './Actions';
-import RenderResults from './RenderResults';
+  KBarSearch
+} from 'kbar'
+import { useRouter } from 'next/router'
+import React from 'react'
+import Actions from './Actions'
+import RenderResults from './RenderResults'
 
 const Kbar: React.FC = ({ children }) => {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <KBarProvider actions={Actions(router)}>
@@ -25,7 +25,7 @@ const Kbar: React.FC = ({ children }) => {
       </KBarPortal>
       {children}
     </KBarProvider>
-  );
-};
+  )
+}
 
-export default Kbar;
+export default Kbar

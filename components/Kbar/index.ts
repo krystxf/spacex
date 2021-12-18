@@ -1,1 +1,1 @@
-export { default as Kbar } from './Kbar';
+export { default as Kbar } from './Kbar'

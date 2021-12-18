@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import PageHeading from '@components/UI/PageHeading';
+import React, { useState } from 'react'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import PageHeading from '@components/UI/PageHeading'
 
-export type SpaceModuleScreenProps = { title: string };
+export type SpaceModuleScreenProps = { title: string }
 
 const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
-  const [offset, setOffset] = useState([0, 0]);
+  const [offset, setOffset] = useState([0, 0])
 
   return (
     <>
@@ -25,7 +25,7 @@ const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
           transition={{ delay: 1, duration: 1, ease: 'easeInOut' }}
           style={{
             x: offset[0],
-            y: offset[1] - 40,
+            y: offset[1] - 40
           }}
         >
           <Image
@@ -43,7 +43,7 @@ const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
             transition={{ duration: 0.5, ease: 'easeInOut' }}
             style={{
               x: offset[0],
-              y: offset[1],
+              y: offset[1]
             }}
           >
             <Image
@@ -58,7 +58,7 @@ const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
       </div>
       <div className="h-44 w-full from-transparent to-black bg-gradient-to-b -mt-52 relative z-20" />
     </>
-  );
-};
+  )
+}
 
-export default SpaceModuleScreen;
+export default SpaceModuleScreen

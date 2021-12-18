@@ -1,8 +1,8 @@
-import { KBarResults, useMatches } from 'kbar';
-import React from 'react';
+import { KBarResults, useMatches } from 'kbar'
+import React from 'react'
 
 const RenderResults = () => {
-  const { results } = useMatches();
+  const { results } = useMatches()
 
   return (
     <KBarResults
@@ -49,7 +49,7 @@ const RenderResults = () => {
         )
       }
     />
-  );
-};
+  )
+}
 
-export default RenderResults;
+export default RenderResults

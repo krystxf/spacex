@@ -1,20 +1,20 @@
-import Button from '@components/UI/Button';
-import Link from 'next/link';
-import LaunchTableRow from './Row';
+import Button from '@components/UI/Button'
+import Link from 'next/link'
+import LaunchTableRow from './Row'
 
 type LaunchTableProps = {
   launch: {
-    details?: string | null;
-    id?: string | null;
-    static_fire_date_utc?: any;
-    launch_date_utc?: any;
+    details?: string | null
+    id?: string | null
+    static_fire_date_utc?: any
+    launch_date_utc?: any
     rocket?: {
-      rocket_name?: string | null;
-    } | null;
-    mission_name?: string | null;
-  };
-  hideMission?: boolean;
-};
+      rocket_name?: string | null
+    } | null
+    mission_name?: string | null
+  }
+  hideMission?: boolean
+}
 
 const LaunchTable: React.FC<LaunchTableProps> = ({ launch, hideMission }) => {
   const plannedLaunch = new Date(launch.launch_date_utc).toLocaleDateString(
@@ -24,9 +24,9 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch, hideMission }) => {
       month: 'short',
       year: 'numeric',
       hour: 'numeric',
-      minute: 'numeric',
+      minute: 'numeric'
     }
-  );
+  )
 
   const actualLaunch = launch.static_fire_date_utc // if date is null return unknown
     ? new Date(launch.static_fire_date_utc).toLocaleDateString('en-UK', {
@@ -34,9 +34,9 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch, hideMission }) => {
         month: 'short',
         year: 'numeric',
         hour: 'numeric',
-        minute: 'numeric',
+        minute: 'numeric'
       })
-    : 'unknown';
+    : 'unknown'
 
   return (
     <>
@@ -80,7 +80,7 @@ const LaunchTable: React.FC<LaunchTableProps> = ({ launch, hideMission }) => {
         </Link>
       </span>
     </>
-  );
-};
+  )
+}
 
-export default LaunchTable;
+export default LaunchTable

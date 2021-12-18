@@ -1,12 +1,12 @@
-import SpacexLogo from '@components/UI/SpacexLogo';
-import Link from 'next/link';
-import React from 'react';
-import NavbarItem from './NavbarItem';
-import MobileNavbar from './MobileNavbar';
+import SpacexLogo from '@components/UI/SpacexLogo'
+import Link from 'next/link'
+import React from 'react'
+import NavbarItem from './NavbarItem'
+import MobileNavbar from './MobileNavbar'
 
-export const PathnameContext = React.createContext('/');
+export const PathnameContext = React.createContext('/')
 
-export type NavbarProps = { pathname: string };
+export type NavbarProps = { pathname: string }
 
 const Navbar: React.FC<NavbarProps> = ({ pathname }) => {
   return (
@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ pathname }) => {
         </span>
       </nav>
     </PathnameContext.Provider>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

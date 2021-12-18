@@ -1,9 +1,9 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
 type FooterItemProps = {
-  link: string;
-  text: string;
-};
+  link: string
+  text: string
+}
 
 const FooterItem: React.FC<FooterItemProps> = ({ link, text }) => {
   return (
@@ -12,7 +12,7 @@ const FooterItem: React.FC<FooterItemProps> = ({ link, text }) => {
         {text.toUpperCase()}
       </a>
     </Link>
-  );
-};
+  )
+}
 
-export default FooterItem;
+export default FooterItem

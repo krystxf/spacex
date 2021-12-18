@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import React from 'react';
+import { motion } from 'framer-motion'
+import React from 'react'
 
 const PageHeading: React.FC<{ title: string }> = ({ title }) => {
   return (
@@ -11,7 +11,7 @@ const PageHeading: React.FC<{ title: string }> = ({ title }) => {
     >
       {title.toUpperCase()}
     </motion.div>
-  );
-};
+  )
+}
 
-export default PageHeading;
+export default PageHeading

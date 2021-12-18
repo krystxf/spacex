@@ -1,20 +1,23 @@
-import type { GetServerSideProps, NextPage } from 'next';
-import { Layout } from '@components/Layout';
-import client from '@lib/apollo-client';
-import CountUp from 'react-countup';
+import type { GetServerSideProps, NextPage } from 'next'
+import { Layout } from '@components/Layout'
+import client from '@lib/apollo-client'
+import CountUp from 'react-countup'
 import {
   RoadsterDocument,
   RoadsterQuery,
   Roadster,
-  Maybe,
-} from 'types/generated';
-import { StarmanScreen } from '@components/Screens';
-import { motion } from 'framer-motion';
+  Maybe
+} from 'types/generated'
+import { StarmanScreen } from '@components/Screens'
+import { motion } from 'framer-motion'
 
 const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
   return (
     <Layout pathname="/roadster">
-      <StarmanScreen title="roadster to the mars" backgroundImage='/starman.webp'>
+      <StarmanScreen
+        title="roadster to the mars"
+        backgroundImage="/starman.webp"
+      >
         <div>
           <motion.p
             className="w-full text-white text-lg"
@@ -47,14 +50,14 @@ const Roadster: NextPage<{ roadster: Roadster }> = ({ roadster }) => {
         </div>
       </StarmanScreen>
     </Layout>
-  );
-};
+  )
+}
 
 const FlexItem: React.FC<{
-  title: string;
-  value?: Maybe<number>;
-  suffix: string;
-  delay: number;
+  title: string
+  value?: Maybe<number>
+  suffix: string
+  delay: number
 }> = ({ title, value, suffix, delay }) => {
   return value ? (
     <motion.div
@@ -76,19 +79,19 @@ const FlexItem: React.FC<{
         />
       </h3>
     </motion.div>
-  ) : null;
-};
+  ) : null
+}
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const { data }: { data: RoadsterQuery } = await client.query({
-    query: RoadsterDocument,
-  });
+    query: RoadsterDocument
+  })
 
   return {
     props: {
-      roadster: data.roadster,
-    },
-  };
-};
+      roadster: data.roadster
+    }
+  }
+}
 
-export default Roadster;
+export default Roadster

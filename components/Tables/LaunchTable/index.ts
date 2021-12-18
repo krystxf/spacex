@@ -1,1 +1,1 @@
-export { default as LaunchTable } from './LaunchTable';
+export { default as LaunchTable } from './LaunchTable'

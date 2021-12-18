@@ -1,20 +1,20 @@
-import Row from '@components/Tables/LaunchTable/Row';
-import Button from '@components/UI/Button';
-import Link from 'next/link';
-import CountUp from 'react-countup';
-import { Mission } from 'types/generated';
+import Row from '@components/Tables/LaunchTable/Row'
+import Button from '@components/UI/Button'
+import Link from 'next/link'
+import CountUp from 'react-countup'
+import { Mission } from 'types/generated'
 
 const MissionTable = ({ mission }: { mission: Mission }) => {
   // manufacturers separated by commas
   const manufacturers = mission.manufacturers?.reduce(
     (prev, manufacturer, index) =>
       prev + `${index === 0 ? '' : ', '}${manufacturer}`
-  );
+  )
 
   const totalPayload = mission.payloads?.reduce(
     (prev, payload) => prev + (payload?.payload_mass_kg ?? 0),
     0
-  ); // sum all numbers in array
+  ) // sum all numbers in array
 
   return (
     <div
@@ -54,7 +54,7 @@ const MissionTable = ({ mission }: { mission: Mission }) => {
         </Link>
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default MissionTable;
+export default MissionTable
