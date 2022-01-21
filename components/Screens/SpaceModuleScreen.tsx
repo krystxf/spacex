@@ -31,6 +31,7 @@ const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
           <Image
             src="/background.webp"
             layout="fill"
+            placeholder="blur"
             objectFit="cover"
             objectPosition="center"
             alt="Background picture"
@@ -49,6 +50,7 @@ const SpaceModuleScreen: React.FC<SpaceModuleScreenProps> = ({ title }) => {
             <Image
               src="/dragon2.png"
               layout="fill"
+              placeholder="blur"
               objectFit="contain"
               objectPosition="center"
               alt="Dragon module picture"

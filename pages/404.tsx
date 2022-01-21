@@ -24,6 +24,7 @@ const Error404: NextPage = () => {
       >
         <Image
           src="/hls-resized-2.jpg"
+          placeholder="blur"
           layout="fill"
           objectFit="contain"
           objectPosition="center bottom"
